@@ -11,11 +11,15 @@
   function SearchresultController($scope,SearchService,$http,$rootScope,$window) {
   
   var vm = this;
+
+  //Pagination variables for initial table.
   $scope.currentPage = 1;
-    $scope.pageSize = 10;
+  $scope.pageSize = 10;
 
   activate();
 
+    //On each pagination click, this method will be called to fetch related data.
+    // Indeed rest service is called to fetch data.
    $scope.pageChangeHandler = function(pageNumber){
         
         $http.jsonp("http://api.indeed.com/ads/apisearch?", {params: {
@@ -38,9 +42,9 @@
                 }});
     }
 
+    // Service call callback method to store response in scope.
     $window.mysuccess = function(response){
-    //vm.searchData = response;
-    $rootScope.$broadcast('refreshData', response);
+     $rootScope.$broadcast('refreshData', response);
     }
 
      $scope.$on('refreshData', function(event, data){

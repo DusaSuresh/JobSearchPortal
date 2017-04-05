@@ -6,13 +6,16 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr,SearchService,$scope, $http, $window, $state) {
+  function MainController($timeout,SearchService,$scope, $http, $window, $state) {
      var vm = this;
 
+
+    // Fetching dropdown box data from serviceses. 
     vm.statecodes = SearchService.getStateCode();
     vm.jobCategories = SearchService.getJobCategory();
     vm.jobClasstypes = SearchService.getJobClasstype();
 
+  // Displaying map on landing page using Datamap api and setting configuration of map
   var election = new Datamap({
   scope: 'usa',
   element: document.getElementById('container'),
@@ -245,6 +248,8 @@ election.labels();
     activate();
 
 
+  // This method will be called on click of any "GO" button in landing page
+  // In this method "Indeed" api called to get the search related data.
   $scope.jobClass =function(state,category,jobType){
       
     SearchService.setState(state);
@@ -270,6 +275,7 @@ election.labels();
                 }});
   }
 
+  // Callback method of above called service and response will be stored in service.
   $window.mysuccess = function(response){
     SearchService.setSearchData(response);
     $state.go('searchresult');
