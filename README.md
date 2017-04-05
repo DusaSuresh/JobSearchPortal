@@ -17,15 +17,20 @@ Download node.js from the below link as per your OS and type(bits)
   
   Step 2: 
   ------
-  Open command prompt and install bower and gulp.
+ 
+ - Open command prompt and install bower and gulp.
+ 
   c:\> npm install –g bower
+  
   c:\> npm install -g gulp
-	g- globally installing the bower command line installer using npm
+  
+  g- globally installing the bower command line installer using npm
 
 	- Check the version using below command
-
-	-c:\> bower –v
-  -c:\> gulp -v
+  
+	c:\> bower –v
+  
+  c:\> gulp -v
   
   
   Step 3:
