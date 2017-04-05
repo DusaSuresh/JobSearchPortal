@@ -9,7 +9,7 @@
    */
   angular.module('jobPortal')
     .service('SearchService', function() {
-      var searchData;
+      var searchData, state, category, jobType;
 
       function setSearchData(result){
         searchData = result;
@@ -305,13 +305,41 @@
         "key": "Product Support"
     }];
      }
+
+    function setState(resultState){
+        state = resultState;
+    }
+      
+    function getState(){
+      return state;
+    }
+    function setCategory(resultCategory){
+        category = resultCategory;
+    }
+      
+    function getCategory(){
+      return category;
+    } 
+    function setJobType(resultJobType){
+        jobType = resultJobType;
+    }
+      
+    function getJobType(){
+      return jobType;
+    }  
      
       return {
         setSearchData: setSearchData,
         getSearchData: getSearchData,
         getStateCode: getStateCode,
         getJobCategory: getJobCategory,
-        getJobClasstype: getJobClasstype
+        getJobClasstype: getJobClasstype,
+        setState: setState,
+        getState: getState,
+        setCategory: setCategory,
+        getCategory: getCategory,
+        setJobType: setJobType,
+        getJobType: getJobType
         
       };
 

@@ -247,6 +247,9 @@ election.labels();
 
   $scope.jobClass =function(state,category,jobType){
       
+    SearchService.setState(state);
+    SearchService.setCategory(category);
+    SearchService.setJobType(jobType);
     $http.jsonp("http://api.indeed.com/ads/apisearch?", {params: {
                     "publisher": 5396176379454272,
                     "v": "2",
