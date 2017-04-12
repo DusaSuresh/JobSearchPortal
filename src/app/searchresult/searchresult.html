@@ -29,7 +29,7 @@
                   </thead>
                   <tbody>
                             <!-- <tr ng-repeat="data in searchData"> -->
-                            <tr dir-paginate="data in searchresult.searchData.results|itemsPerPage:pageSize" total-items="searchresult.searchData.totalResults" current-page="currentPage">
+                            <tr dir-paginate="data in searchresult.searchData.results|itemsPerPage:searchresult.pageSize" total-items="searchresult.searchData.totalResults" current-page="searchresult.currentPage">
                             <td class="hidden-xs"><a href="{{data.url}}" target="_blank">{{data.jobkey}}</a></td>
                             <td><a href="{{data.url}}" target="_blank">{{data.jobtitle}}</a></td>
                             <td>{{data.company}}</td>

@@ -18,7 +18,7 @@
         templateUrl: 'app/searchresult/searchresult.html',
         controller: 'SearchresultController',
         controllerAs: 'searchresult'
-      });;
+      });
 
     $urlRouterProvider.otherwise('/');
   }

@@ -11,16 +11,17 @@
   function SearchresultController($scope,SearchService,$http,$rootScope,$window) {
   
   var vm = this;
+  var publicInterface;
 
   //Pagination variables for initial table.
-  $scope.currentPage = 1;
-  $scope.pageSize = 10;
+  vm.currentPage = 1;
+  vm.pageSize = 10;
 
   activate();
 
     //On each pagination click, this method will be called to fetch related data.
     // Indeed rest service is called to fetch data.
-   $scope.pageChangeHandler = function(pageNumber){
+   function pageChangeHandler(pageNumber){
         
         $http.jsonp("http://api.indeed.com/ads/apisearch?", {params: {
                     "publisher": 5396176379454272,
@@ -54,5 +55,10 @@
   function activate() {
      vm.searchData = SearchService.getSearchData();
      }
+
+     publicInterface = {
+        pageChangeHandler: pageChangeHandler
+      };
+      angular.extend($scope, publicInterface);
   }
 })();

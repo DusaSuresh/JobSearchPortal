@@ -8,7 +8,7 @@
   /** @ngInject */
   function MainController($timeout,SearchService,$scope, $http, $window, $state) {
      var vm = this;
-
+     var publicInterface;
 
     // Fetching dropdown box data from serviceses. 
     vm.statecodes = SearchService.getStateCode();
@@ -21,7 +21,7 @@
   element: document.getElementById('container'),
   done: function(datamap) {
             datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-                $scope.jobClass(geography.id);
+                jobClass(geography.id);
             });
         },
   geographyConfig: {
@@ -250,7 +250,7 @@ election.labels();
 
   // This method will be called on click of any "GO" button in landing page
   // In this method "Indeed" api called to get the search related data.
-  $scope.jobClass =function(state,category,jobType){
+    function jobClass(state,category,jobType){
       
     SearchService.setState(state);
     SearchService.setCategory(category);
@@ -285,6 +285,9 @@ election.labels();
      
     }
 
-
+     publicInterface = {
+        jobClass: jobClass
+      };
+      angular.extend($scope, publicInterface);
   }
 })();
