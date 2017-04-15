@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout,SearchService,$scope, $http, $window, $state) {
+  function MainController($timeout,SearchService,$scope, $http, $window, $state, $document) {
      var vm = this;
      var publicInterface;
 
@@ -18,7 +18,7 @@
   // Displaying map on landing page using Datamap api and setting configuration of map
   var election = new Datamap({
   scope: 'usa',
-  element: document.getElementById('container'),
+  element: $document[0].querySelector('#container'),
   done: function(datamap) {
             datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
                 jobClass(geography.id);
