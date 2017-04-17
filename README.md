@@ -1,5 +1,14 @@
 # JobSearchPortal
 
+Required Softwares:
+1. NodeJs
+2. Bower
+3. Gulp
+4. AngularJS
+5. Bootstrap
+6. Indeed rest search API
+7. DataMap
+
 Installation & Configuration:
 
 Step 1:  
