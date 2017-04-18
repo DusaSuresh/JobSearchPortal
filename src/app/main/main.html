@@ -1,3 +1,6 @@
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT8te8j9AVeOtlr8KMMn_u4sQIElFRV6k&callback=initMap">
+    </script>
 <div class="container">
  
   <div class="row">
@@ -38,21 +41,7 @@
                  <button type="button" class="btn btn-info" ng-click="jobClass(null, selectedCategory.key, null)">GO</button>
               </div>
               </div>
-
-              <!-- <div class="form-group divGap">
-                <div class="col-sm-10">
-                <select class="form-control selectpicker" title="Select" id="departmentName">
-                  <option value="">INTERNATIONAL JOBS</option>
-                  <option value="ITAAD">ITAAD</option>
-                  <option value="GIT">GIT</option>
-                  <option value="ITOC">ITOC</option>
-                  <option value="RRM">RRM</option>
-                </select></div>
-                <div class="col-sm-2">
-                 <button type="button" class="btn btn-info">GO</button>
-              </div>
-              </div> -->
-    </form>
+              </form>
         </div>
         <div class="thumbnail1"></div>
       </div>
@@ -60,7 +49,8 @@
       <div class="col-sm-8 col-md-8">
         <div class="thumbnail">  
         <!--<div svg-map></div> -->
-        <div id="container" style="position: relative; width: 750px; height: 500px;"></div>  
+        <!-- <div id="container" style="position: relative; width: 750px; height: 500px;"></div>  --> 
+        <div id="map" style="position: relative; width: 750px; height: 500px;"></div> 
         </div>
       </div>
 
