@@ -67,6 +67,23 @@ thead{
     background:grey;
 }
 
+.button {
+  background-color: #DAF7A6;  
+  border-radius: 5px;
+  color: black;
+  padding: .3em;
+  text-decoration: none;
+}
+
+.button:focus,
+.button:hover {
+  background-color: orange;
+}
+
+a {
+    text-decoration: none !important;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

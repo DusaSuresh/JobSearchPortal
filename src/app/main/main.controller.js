@@ -24,40 +24,21 @@
           center: uluru
         });
         setMarkers(map);
-        var contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-            '<div id="bodyContent">'+
-            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-            'rock caves and ancient paintings. Uluru is listed as a World '+
-            'Heritage Site.</p>'+
-            '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-            'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-            '(last visited June 22, 2009).</p>'+
-            '</div>'+
-            '</div>';
+        }
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          title: 'Uluru (Ayers Rock)'
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-      }
+      //google.maps.event.addDomListener(window, "load", initMap);
 
 var beaches = [
-        ['Boston city', 42.332221, -71.016432, 4],
-        ['Brookline', 42.324269, -71.140803, 5],
-        ['Framingham', 42.308536, -71.436754, 3],
-        ['Malden city', 42.430474, -71.057637, 2],
-        ['Waltham city', 42.38892, -71.242325, 1]
+        ['New Bedford city', 41.66149, -70.938196, 9, 'New Bedford'],
+        ['Cambridge city', 42.375819, -71.118399, 8, 'Cambridge'],
+        ['Springfield city', 42.115498, -72.539525, 7, 'Springfield'],
+        ['Worcester city', 42.270543, -71.80794, 6, 'Worcester'],
+        ['Brookline', 42.324269, -71.140803, 5,'Brookline'],
+        ['Boston city', 42.332221, -71.016432, 4,'Boston'],
+        ['Framingham', 42.308536, -71.436754, 3,'Framingham'],
+        ['Malden city', 42.430474, -71.057637, 2, 'Malden'],
+        ['Waltham city', 42.38892, -71.242325, 1, 'Waltham']
+        
       ];
 
 
@@ -85,6 +66,10 @@ var beaches = [
           coords: [1, 1, 1, 20, 18, 20, 18, 1],
           type: 'poly'
         };
+        var infowindow = null;
+        infowindow = new google.maps.InfoWindow({
+        content: "holding..."
+        });
         for (var i = 0; i < beaches.length; i++) {
           var beach = beaches[i];
           var marker = new google.maps.Marker({
@@ -93,247 +78,50 @@ var beaches = [
             icon: image,
             shape: shape,
             title: beach[0],
-            zIndex: beach[3]
+            zIndex: beach[3],
+            html: beach[4]
           });
-          
-          marker.addListener('click', function() {
-            var infowindow = new google.maps.InfoWindow({
-          content: "suresh"
-        });
-          infowindow.open(map, marker);
-        });
-        }
-      }
-  // Displaying map on landing page using Datamap api and setting configuration of map
-  /*var election = new Datamap({
-  scope: 'usa',
-  element: $document[0].querySelector('#container'),
-  done: function(datamap) {
-            datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-                jobClass(geography.id);
-            });
-        },
-  geographyConfig: {
-    highlightBorderColor: '#bada55',
-   popupTemplate: function(geography, data) {
-      return '<div class="hoverinfo">' + geography.properties.name + '--Jobs:' +  data.electoralVotes + ' '    },
-    highlightBorderWidth: 3
-  },
 
-  fills: {
-  'Republican': '#CC4731',
-  'Democrat': '#306596',
-  'Heavy Democrat': '#667FAF',
-  'Light Democrat': '#A9C0DE',
-  'Heavy Republican': '#CA5E5B',
-  'Light Republican': '#EAA9A8',
-  defaultFill: '#EDDC4E'
-},
-data:{
-  "AZ": {
-      "fillKey": "Republican",
-      "electoralVotes": 5
-  },
-  "CO": {
-      "fillKey": "Light Democrat",
-      "electoralVotes": 5
-  },
-  "DE": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "FL": {
-      "fillKey": "UNDECIDED",
-      "electoralVotes": 29
-  },
-  "GA": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "HI": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "ID": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "IL": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "IN": {
-      "fillKey": "Republican",
-      "electoralVotes": 11
-  },
-  "IA": {
-      "fillKey": "Light Democrat",
-      "electoralVotes": 11
-  },
-  "KS": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "KY": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "LA": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "MD": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "ME": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "MA": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "MN": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "MI": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "MS": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "MO": {
-      "fillKey": "Republican",
-      "electoralVotes": 13
-  },
-  "MT": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "NC": {
-      "fillKey": "Light Republican",
-      "electoralVotes": 32
-  },
-  "NE": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "NV": {
-      "fillKey": "Heavy Democrat",
-      "electoralVotes": 32
-  },
-  "NH": {
-      "fillKey": "Light Democrat",
-      "electoralVotes": 32
-  },
-  "NJ": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "NY": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "ND": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "NM": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "OH": {
-      "fillKey": "UNDECIDED",
-      "electoralVotes": 32
-  },
-  "OK": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "OR": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "PA": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "RI": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "SC": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "SD": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "TN": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "TX": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "UT": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "WI": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "VA": {
-      "fillKey": "Light Democrat",
-      "electoralVotes": 32
-  },
-  "VT": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "WA": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "WV": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "WY": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "CA": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "CT": {
-      "fillKey": "Democrat",
-      "electoralVotes": 32
-  },
-  "AK": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "AR": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  },
-  "AL": {
-      "fillKey": "Republican",
-      "electoralVotes": 32
-  }
-}
-});
-election.labels();
-  */        
+          google.maps.event.addListener(marker, 'click', (function(marker) {
+              return function() {
+                 $.ajax({
+                cache: false,
+                data: $.extend({
+                publisher: 5396176379454272,
+                v: '2',
+                format: 'json',
+                q: "",
+                l: this.html,
+                radius: 50,
+                limit: "",
+                sort: "",
+                highlight: 1,
+                filter: 1,
+                userip: '',
+                useragent: ''
+               }, {
+                start: "1",
+                end: "10"
+               }),
+               dataType: 'jsonp',
+               type: 'GET',
+               url: 'http://api.indeed.com/ads/apisearch'
+               })
+               .done(function(data) {
+                infowindow.close();
+                var finalContent = '<div id="content">';
+                for (var i = 0; i < data.results.length; i++) {
+                finalContent += "<p><a href="+data.results[i].url+" target=\"_blank\" class=\"button js-button\">"+data.results[i].jobtitle+"</a><br>";
+                }
+                infowindow.setContent(finalContent);
+                infowindow.open(map, marker);
+               });
+              }
+            }) (marker));
+          
+          }
+      }
+       
     activate();
 
 
