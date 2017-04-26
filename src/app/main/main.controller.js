@@ -90,7 +90,7 @@ var beaches = [
                 publisher: 5396176379454272,
                 v: '2',
                 format: 'json',
-                q: "",
+                q: "Information Technology",
                 l: this.html,
                 radius: 50,
                 limit: "",

@@ -289,20 +289,8 @@
         "key": "Software Engineer"
     },
     {
-        "name": "Manufacturing",
-        "key": "Manufacturing"
-    },
-    {
         "name": "Information Technology",
         "key": "Information Technology"
-    },
-    {
-        "name": "Technicians",
-        "key": "Technicians"
-    },
-    {
-        "name": "Product Support",
-        "key": "Product Support"
     }];
      }
 

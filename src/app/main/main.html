@@ -15,7 +15,7 @@
                 </select>
               </div>
               <div class="col-sm-2">
-                 <button type="button" class="btn btn-info" ng-click="jobClass(null, null, selectedJobType.key)">GO</button>
+                 <button type="button" class="btn btn-info" ng-click="jobClass(selectedCity.abbreviation, selectedCategory.key, selectedJobType.key)">GO</button>
               </div></div>
 
                <div class="form-group divGap">
@@ -26,7 +26,7 @@
                 </select>
               </div>
               <div class="col-sm-2">
-                 <button type="button" class="btn btn-info" ng-click="jobClass(selectedCity.abbreviation, null, null)">GO</button>
+                 <button type="button" class="btn btn-info" ng-click="jobClass(selectedCity.abbreviation, selectedCategory.key, selectedJobType.key)">GO</button>
               </div>
               </div>
 
@@ -38,7 +38,7 @@
                 </select>
               </div>
               <div class="col-sm-2">
-                 <button type="button" class="btn btn-info" ng-click="jobClass(null, selectedCategory.key, null)">GO</button>
+                 <button type="button" class="btn btn-info" ng-click="jobClass(selectedCity.abbreviation, selectedCategory.key, selectedJobType.key)">GO</button>
               </div>
               </div>
               </form>
